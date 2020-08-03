@@ -1,4 +1,4 @@
-package main
+package model
 
 type ServerConfig struct {
 	Ip   string `ini:"ip"`

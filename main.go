@@ -1,6 +1,8 @@
 package main
 
 import (
+	"Practise_reflex/model"
+	"Practise_reflex/tool"
 	"fmt"
 	"io/ioutil"
 )
@@ -11,8 +13,8 @@ func parseFile(filename string) {
 	if err != nil {
 		return
 	}
-	var conf Config
-	err = UnMarshal(data, &conf)
+	var conf model.Config
+	err = tool.UnMarshal(data, &conf)
 	if err != nil {
 		return
 	}
@@ -22,17 +24,17 @@ func parseFile(filename string) {
 
 func parseFile2(filename string)  {
 	// 有一些假数据
-	var conf Config
+	var conf model.Config
 	conf.ServerConf.Ip="127.0.0.1"
 	conf.ServerConf.Port=8000
 	conf.MysqlConf.Port=9000
-	err := MarshalFile(filename,conf)
+	err := tool.MarshalFile(filename,conf)
 	if err != nil{
 		return
 	}
 }
 
 func main() {
-	//parseFile("D:/config.ini")
-	parseFile2("D:/my2.ini")
+	parseFile("./config.ini")
+	//parseFile2("/Users/zqm/GolandProjects/src/Practise_reflex/my2.ini")
 }
